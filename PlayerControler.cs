@@ -38,6 +38,7 @@ public class PlayerControler : MonoBehaviour
     GameObject AttackHitBox;
     public float reboot;
     bool isAttacking = false;
+    public bool isBlock =false;
 
 
     [Header("For Dash")]
@@ -65,8 +66,6 @@ public class PlayerControler : MonoBehaviour
     public int tdd =0;
     public bool isDead = false;
     public GameController gameController;
-
-    //public Rigidbody2D Rb { get => rb; set => rb = value; }
 
     void Start()
     {
@@ -102,8 +101,14 @@ public class PlayerControler : MonoBehaviour
         }
         if(Input.GetKey(KeyCode.Z) && !isAttacking)
         {
+            isBlock = true;
             anim.Play("Block");
         }
+        else
+        {
+            isBlock = false;
+        }
+
         if(Input.GetKeyDown(KeyCode.X))
         {
             TakeDamage(20);
